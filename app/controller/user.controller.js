@@ -15,4 +15,4 @@ exports.postUserRoute = async (req, res) => {
   } catch (error) {
     
   }
-};
+}
