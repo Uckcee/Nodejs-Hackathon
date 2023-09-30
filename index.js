@@ -1,14 +1,18 @@
 const express = require ('express')
 const mongoose = require ('mongoose')
-// const cors = require('cors')
+const cors = require('cors')
 const userroute = require('./app/route/user.route')
+const transfer = require('./app/route/transaction.route')
+const wallet = require('./app/route/wallet.route')
 
 const server = express()
 const port = 8083
 
-// server.use(cors)
+// server.use(cors())
 server.use(express.json())
 server.use(userroute)
+server.use(transfer)
+server.use(wallet)
 const dbURL =
   "mongodb+srv://uchekelechi002:sancheazy04@cluster0.q5jvlui.mongodb.net/?retryWrites=true&w=majority";
 

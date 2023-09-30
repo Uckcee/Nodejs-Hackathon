@@ -1,14 +1,19 @@
-import mongoose from 'mongoose';
-const Schema = mongoose.Schema
+const mongoose = require('mongoose')
 
-const walletSchema = new Schema ({
-    userId: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-    },
-    balance: {
-        type: Number,
-    }
-})
+const WalletSchema = new mongoose.Schema({
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
+  balance: {
+    type: Number,
+    default: 0,
+  },
+  created_at: {
+    type: Date,
+    required: true,
+    default: Date.now,
+  },
+});
 
-module.exports = mongoose.model('Wallet', walletSchema)
+module.exports = mongoose.model('Wallet', WalletSchema)
