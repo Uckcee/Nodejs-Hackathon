@@ -1,5 +1,6 @@
 const Wallet = require("../model/wallet.model")
 const User = require("../model/user.model")
+// const Transaction = require("../model/transactions.model");
 
 
 exports.createWallet = async (req, res) => {
@@ -66,7 +67,11 @@ exports.updateBalance = async (req, res) => {
       const { amount, action } = req.body
 
       if (action === "deposit") {
-        wallet.balance += amount;
+        wallet.balance += amount
+        return res.send({
+          status: true,
+          message: "Deposit completed"
+        })
       } else if (action === "withdraw") {
        
         if (wallet.balance < amount) {
@@ -83,9 +88,10 @@ exports.updateBalance = async (req, res) => {
 
       await wallet.save();
 
-      return res.send({ message: "Wallet balance updated successfully" });
+      return res.send({ message: "Withdraw successful, wallet balance updated" });
 
   }catch(error) {
 
   }
 }
+
