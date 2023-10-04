@@ -67,13 +67,10 @@ exports.updateBalance = async (req, res) => {
       const { amount, action } = req.body
 
       if (action === "deposit") {
-        wallet.balance += amount
-        return res.send({
-          status: true,
-          message: "Deposit completed"
-        })
+         res.send({ message: "Deposit successful, wallet balance updated" });
+          wallet.balance += amount   
+
       } else if (action === "withdraw") {
-       
         if (wallet.balance < amount) {
           return res.send({
             status: false,
